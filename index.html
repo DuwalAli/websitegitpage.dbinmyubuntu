@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Cloud Portal Login</title>
+    <title>Cloud Portal Login</title>
     <style>
-        body { font-family: Arial; background:#f2f2f2; }
-        .box { width:300px; margin:100px auto; padding:25px; background:white; border-radius:10px; box-shadow:0 0 10px #ccc; }
-        input { width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #888; }
-        button { width:100%; padding:10px; background:#007bff; color:white; border:none; border-radius:5px; }
+        body { font-family: Arial; background:#f0f0f0; }
+        .box {
+            width: 300px; margin: 100px auto; padding: 20px;
+            background: white; border-radius: 10px; box-shadow: 0 0 10px #aaa;
+        }
+        input, button {
+            width: 100%; padding: 10px; margin-top: 10px;
+            border-radius: 5px; border: 1px solid #888;
+        }
+        button { background: #007bff; color: white; border: none; }
     </style>
 </head>
 <body>
 
 <div class="box">
     <h2>Login</h2>
+
     <input id="username" placeholder="Username">
     <input id="password" type="password" placeholder="Password">
+
     <button onclick="login()">Login</button>
-    <p id="msg"></p>
+
+    <p id="msg" style="color:red;"></p>
 </div>
 
 <script>
@@ -26,9 +35,9 @@ function login() {
         password: document.getElementById("password").value
     };
 
-    fetch("http://10.206.81.66:5000/login", {
+    fetch("http://192.168.56.101:5000/login", {
         method: "POST",
-        headers: {"Content-Type":"application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
     })
     .then(res => res.json())
